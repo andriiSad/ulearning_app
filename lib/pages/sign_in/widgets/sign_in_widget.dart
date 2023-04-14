@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../common/values/colors.dart';
+
 AppBar buildAppBar() {
   return AppBar(
     bottom: PreferredSize(
@@ -8,13 +10,13 @@ AppBar buildAppBar() {
       child: Container(
         //height defines thickness of the underline
         height: 1,
-        color: Colors.grey.withOpacity(0.5),
+        color: AppColors.primarySecondaryBackground,
       ),
     ),
     title: Text(
       'Log In',
       style: TextStyle(
-        color: Colors.black,
+        color: AppColors.primaryText,
         fontSize: 16.sp,
         fontWeight: FontWeight.normal,
       ),
@@ -29,6 +31,10 @@ Widget buildThirdPartyLogin(BuildContext context) {
     margin: EdgeInsets.only(
       top: 40.h,
       bottom: 20.h,
+    ),
+    padding: EdgeInsets.only(
+      left: 65.w,
+      right: 65.w,
     ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -86,7 +92,7 @@ Widget buildTextField({
         15.w,
       ),
       border: Border.all(
-        color: Colors.black,
+        color: AppColors.primaryFourElementText,
       ),
     ),
     child: Row(
@@ -108,8 +114,8 @@ Widget buildTextField({
             keyboardType: TextInputType.multiline,
             decoration: InputDecoration(
               hintText: hintText,
-              hintStyle: TextStyle(
-                color: Colors.grey.withOpacity(0.5),
+              hintStyle: const TextStyle(
+                color: AppColors.primarySecondaryElementText,
               ),
               border: const OutlineInputBorder(
                 borderSide: BorderSide(
@@ -133,7 +139,7 @@ Widget buildTextField({
               ),
             ),
             style: TextStyle(
-              color: Colors.black,
+              color: AppColors.primaryText,
               fontFamily: 'Avenir',
               fontWeight: FontWeight.normal,
               fontSize: 14.sp,
@@ -156,7 +162,7 @@ Widget forgotPassword() {
       child: Text(
         'Forgot Password?',
         style: TextStyle(
-          color: Colors.black,
+          color: AppColors.primaryText,
           fontSize: 12.sp,
           decoration: TextDecoration.underline,
         ),
@@ -181,13 +187,20 @@ Widget buildLigInAndRegButton({
         borderRadius: BorderRadius.circular(
           15.w,
         ),
-        color: buttonType == 'login' ? Colors.blue : Colors.white,
-        boxShadow: [
+        color: buttonType == 'login'
+            ? AppColors.primaryElement
+            : AppColors.primaryBackground,
+        border: Border.all(
+          color: buttonType == 'login'
+              ? Colors.transparent
+              : AppColors.primaryFourElementText,
+        ),
+        boxShadow: const [
           BoxShadow(
             spreadRadius: 1,
             blurRadius: 2,
-            offset: const Offset(0, 1),
-            color: Colors.grey.withOpacity(0.1),
+            offset: Offset(0, 1),
+            color: AppColors.primaryFourElementText,
           ),
         ],
       ),
@@ -195,7 +208,9 @@ Widget buildLigInAndRegButton({
         child: Text(
           buttonName,
           style: TextStyle(
-            color: buttonType == 'login' ? Colors.white : Colors.black,
+            color: buttonType == 'login'
+                ? AppColors.primaryBackground
+                : AppColors.primaryText,
             fontSize: 16.sp,
             fontWeight: FontWeight.normal,
           ),
