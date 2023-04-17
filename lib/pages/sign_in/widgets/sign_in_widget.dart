@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../common/values/colors.dart';
+import '../sign_in_controller.dart';
 
 AppBar buildAppBar() {
   return AppBar(
@@ -79,6 +80,7 @@ Widget reusableText(String text) {
 Widget buildTextField({
   required String hintText,
   required String iconName,
+  void Function(String value)? func,
   bool isPassword = false,
 }) {
   return Container(
@@ -111,6 +113,7 @@ Widget buildTextField({
           width: 250.w,
           height: 50.h,
           child: TextField(
+            onChanged: (value) => func!(value),
             keyboardType: TextInputType.multiline,
             decoration: InputDecoration(
               hintText: hintText,
@@ -174,9 +177,10 @@ Widget forgotPassword() {
 Widget buildLigInAndRegButton({
   required String buttonName,
   required String buttonType,
+  required void Function() callback,
 }) {
   return GestureDetector(
-    onTap: () {},
+    onTap: callback,
     child: Container(
       width: 325.w,
       height: 50.h,
