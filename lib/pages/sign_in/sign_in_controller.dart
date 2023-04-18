@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ulearning_app/common/widgets/flutter_toast.dart';
 
 import 'bloc/sign_in_blocs.dart';
 
@@ -15,36 +16,43 @@ class SignInController {
         String emailAdress = state.email;
         String password = state.password;
         if (emailAdress.isEmpty) {
-          print('email is empty');
+          toastInfo(msg: 'You need to fill email');
+          return;
         }
         if (password.isEmpty) {
-          print('password is empty');
+          toastInfo(msg: 'You need to fill password');
+          return;
         }
         try {
           final credential = await FirebaseAuth.instance
               .signInWithEmailAndPassword(
                   email: emailAdress, password: password);
           if (credential.user == null) {
-            print('user does not exist');
+            toastInfo(msg: 'User does not exist');
+            return;
           }
           if (!credential.user!.emailVerified) {
-            print('user not verified');
+            toastInfo(msg: 'You need to verify your account');
+            return;
           }
           var user = credential.user;
           if (user != null) {
-            print('user is not null');
+            // toastInfo(msg: 'user is not null');
             //we got verified user from Firebase
           } else {
-            print('user is null');
+            toastInfo(msg: 'User does not exist');
+            return;
             //we have error getting user from Firebase
           }
         } on FirebaseAuthException catch (e) {
           if (e.code == 'user-not-found') {
-            print('No user found for that email.');
+            toastInfo(msg: 'No user found for that email.');
           } else if (e.code == 'wrong-password') {
-            print('Wrong password provided for that user.');
+            toastInfo(msg: 'Wrong password provided for that user.');
           } else if (e.code == 'invalid-email') {
-            print('Invalid email provided for that user.');
+            toastInfo(msg: 'Your email format is wrong');
+          } else {
+            toastInfo(msg: e.code);
           }
         }
       }

@@ -80,7 +80,7 @@ class _SignInState extends State<SignIn> {
                             buttonName: 'Register',
                             buttonType: 'register',
                             callback: () {
-                              print('register button');
+                              Navigator.of(context).pushNamed('/register');
                             },
                           ),
                         ],
