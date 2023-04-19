@@ -5,12 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/app_blocs.dart';
 import 'package:ulearning_app/app_states.dart';
 import 'package:ulearning_app/pages/bloc_providers.dart';
-import 'package:ulearning_app/pages/sign_in/bloc/sign_in_blocs.dart';
 import 'package:ulearning_app/pages/sign_in/sign_in.dart';
-import 'package:ulearning_app/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:ulearning_app/pages/welcome/welcome.dart';
 
 import 'app_events.dart';
+import 'common/values/colors.dart';
 import 'firebase_options.dart';
 import 'pages/register/register.dart';
 
@@ -35,6 +34,9 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           theme: ThemeData(
             appBarTheme: const AppBarTheme(
+              iconTheme: IconThemeData(
+                color: AppColors.primaryText,
+              ),
               backgroundColor: Colors.white,
               elevation: 0,
             ),
