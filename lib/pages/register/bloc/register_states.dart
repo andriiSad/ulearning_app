@@ -1,10 +1,10 @@
 class RegisterStates {
-  const RegisterStates(
-    this.username,
-    this.email,
-    this.password,
-    this.rePassword,
-  );
+  const RegisterStates({
+    this.username = '',
+    this.email = '',
+    this.password = '',
+    this.rePassword = '',
+  });
 
   final String username;
   final String email;
@@ -18,9 +18,9 @@ class RegisterStates {
     String? rePassword,
   }) =>
       RegisterStates(
-        username ?? this.username,
-        email ?? this.email,
-        password ?? this.password,
-        rePassword ?? this.rePassword,
+        username: username ?? this.username,
+        email: email ?? this.email,
+        password: password ?? this.password,
+        rePassword: rePassword ?? this.rePassword,
       );
 }
