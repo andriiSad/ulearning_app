@@ -45,61 +45,10 @@ class MyApp extends StatelessWidget {
           home: const Welcome(),
           debugShowCheckedModeBanner: false,
           routes: {
-            '/myHomePage': (context) => const MyHomePage(),
             '/signIn': (context) => const SignIn(),
             '/register': (context) => const Register(),
           },
         ),
-      ),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter Demo'),
-      ),
-      body: Center(
-        child: BlocBuilder<AppBlocs, AppStates>(
-          builder: (context, state) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text(
-                  'You have pushed the button this many times:',
-                ),
-                Text(
-                  '${BlocProvider.of<AppBlocs>(context).state.counter}',
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-              ],
-            );
-          },
-        ),
-      ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          FloatingActionButton(
-            heroTag: "heroTagIncrement",
-            onPressed: () => BlocProvider.of<AppBlocs>(context).add(
-              IncrementEvent(),
-            ),
-            child: const Icon(Icons.add),
-          ),
-          FloatingActionButton(
-            heroTag: "heroTagDecrement",
-            onPressed: () => BlocProvider.of<AppBlocs>(context).add(
-              DecrementEvent(),
-            ),
-            child: const Icon(Icons.remove),
-          ),
-        ],
       ),
     );
   }
