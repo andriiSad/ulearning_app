@@ -37,12 +37,12 @@ class SignInController {
           }
           var user = credential.user;
           if (user != null) {
-            // toastInfo(msg: 'user is not null');
             //we got verified user from Firebase
+            toastInfo(msg: 'user is not null');
           } else {
+            //we have error getting user from Firebase
             toastInfo(msg: 'User does not exist');
             return;
-            //we have error getting user from Firebase
           }
         } on FirebaseAuthException catch (e) {
           if (e.code == 'user-not-found') {

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/app_blocs.dart';
 import 'package:ulearning_app/app_states.dart';
+import 'package:ulearning_app/pages/application/app_page.dart';
 import 'package:ulearning_app/pages/bloc_providers.dart';
 import 'package:ulearning_app/pages/sign_in/sign_in.dart';
 import 'package:ulearning_app/pages/welcome/welcome.dart';
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
             ),
             primarySwatch: Colors.blue,
           ),
-          home: const Welcome(),
+          home: const AppPage(),
           debugShowCheckedModeBanner: false,
           routes: {
             '/signIn': (context) => const SignIn(),
