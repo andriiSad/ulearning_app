@@ -171,9 +171,6 @@ class _WelcomeState extends State<Welcome> {
               );
             } else {
               //jump to a new page
-              // Navigator.of(context).pushReplacement(
-              //   MaterialPageRoute(builder: (_) => const MyHomePage()),
-              // );
               Navigator.of(context).pushNamedAndRemoveUntil(
                 '/signIn',
                 (route) => false,
