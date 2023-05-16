@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ulearning_app/common/routes/names.dart';
+import 'package:ulearning_app/pages/application/bloc/app_blocs.dart';
 import 'package:ulearning_app/pages/register/bloc/register_blocs.dart';
 import 'package:ulearning_app/pages/register/register.dart';
 import 'package:ulearning_app/pages/sign_in/bloc/sign_in_blocs.dart';
@@ -37,18 +38,45 @@ class AppPages {
       PageEntity(
         route: AppRoutes.APPLICATION,
         page: const AppPage(),
+        bloc: BlocProvider(
+          create: (_) => AppBlocs(),
+        ),
       ),
     ];
   }
 
 //return all bloc providers
-  static List<dynamic> allProviders(BuildContext context) {
+  static List<dynamic> allBlocProviders(BuildContext context) {
     List<dynamic> blocProviders = <dynamic>[];
 
     for (var bloc in routes()) {
-      blocProviders.add(bloc.bloc);
+      if (bloc.bloc != null) {
+        blocProviders.add(bloc.bloc);
+      }
     }
     return blocProviders;
+  }
+
+  //a model that covers entire screen as we click on Navigator object
+  static MaterialPageRoute generateRouteSettings(RouteSettings settings) {
+    if (settings.name != null) {
+      //check for route name matching when Navigator get triggered
+      var result = routes().where((element) => element.route == settings.name);
+
+      if (result.isNotEmpty) {
+        print('valid route name: ${settings.name}');
+        return MaterialPageRoute(
+          builder: (_) => result.first.page,
+          settings: settings,
+        );
+      }
+    }
+    print('invalid route name: ${settings.name}');
+
+    return MaterialPageRoute(
+      builder: (_) => const SignIn(),
+      settings: settings,
+    );
   }
 }
 

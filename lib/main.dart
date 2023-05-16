@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ulearning_app/common/routes/pages.dart';
-import 'package:ulearning_app/pages/application/app_page.dart';
+import 'package:ulearning_app/common/routes/routes.dart';
 
 import 'common/values/colors.dart';
 import 'firebase_options.dart';
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: AppPages.allProviders(context),
+      providers: [...AppPages.allBlocProviders(context)],
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
           title: 'Flutter Demo',
@@ -39,12 +38,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
           ),
           debugShowCheckedModeBanner: false,
-          home: const AppPage(),
-          // initialRoute: '/',
-          // routes: {
-          //   '/signIn': (context) => const SignIn(),
-          //   '/register': (context) => const Register(),
-          // },
+          onGenerateRoute: AppPages.generateRouteSettings,
         ),
       ),
     );
