@@ -7,6 +7,8 @@ import 'package:ulearning_app/pages/welcome/bloc/welcome_events.dart';
 import 'package:ulearning_app/pages/welcome/bloc/welcome_states.dart';
 
 import '../../common/values/colors.dart';
+import '../../common/values/constant.dart';
+import '../../global.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -170,6 +172,10 @@ class _WelcomeState extends State<Welcome> {
                 curve: Curves.decelerate,
               );
             } else {
+              Global.storageService
+                  .setBool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
+              print(
+                  'The value is ${Global.storageService.getDeviceFirstOpen()}');
               //jump to a new page
               Navigator.of(context).pushNamedAndRemoveUntil(
                 '/sign_in',
