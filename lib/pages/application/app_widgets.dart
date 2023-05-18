@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning_app/pages/home/home_page.dart';
 
 import '../../common/values/colors.dart';
 
 Widget buildPage(int index) {
   List<Widget> widgets = [
-    const Center(child: Text('Home')),
+    const HomePage(),
     const Center(child: Text('Search')),
     const Center(child: Text('Course')),
     const Center(child: Text('Chat')),
