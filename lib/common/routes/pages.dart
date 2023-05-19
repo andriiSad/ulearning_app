@@ -65,12 +65,9 @@ class AppPages {
       var result = routes().where((element) => element.route == settings.name);
 
       if (result.isNotEmpty) {
-        print('first log');
-        print(result.first.route);
         bool deviceFirstOpen = Global.storageService.getDeviceFirstOpen();
         if (result.first.route == AppRoutes.INITIAL && deviceFirstOpen) {
           bool isLoggedIn = Global.storageService.getIsLoggedIn();
-          print('second log');
           if (isLoggedIn) {
             return MaterialPageRoute(
               builder: (_) => const AppPage(),
