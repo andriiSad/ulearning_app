@@ -92,7 +92,7 @@ class _WelcomeState extends State<Welcome> {
                       dotsCount: 3,
                       mainAxisAlignment: MainAxisAlignment.center,
                       decorator: DotsDecorator(
-                        color: AppColors.primaryThreeElementText,
+                        color: AppColors.primaryThirdElementText,
                         activeColor: AppColors.primaryElement,
                         size: const Size.square(8.0),
                         activeSize: const Size(

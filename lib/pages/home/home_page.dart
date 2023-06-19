@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             homePageText(
               'Hello,',
-              color: AppColors.primaryThreeElementText,
+              color: AppColors.primaryThirdElementText,
               top: 20,
             ),
             homePageText(
@@ -41,6 +41,7 @@ class _HomePageState extends State<HomePage> {
               height: 20.h,
             ),
             searchView(),
+            slidersView(),
           ],
         ),
       ),
