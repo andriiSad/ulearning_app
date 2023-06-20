@@ -1,7 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning_app/pages/home/bloc/home_page_blocs.dart';
+import 'package:ulearning_app/pages/home/bloc/home_page_states.dart';
 
 import '../../common/values/colors.dart';
 import 'widgets/home_page_widgets.dart';
@@ -19,31 +22,70 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: buildAppBar(),
-      body: Container(
-        margin: EdgeInsets.symmetric(
-          vertical: 0,
-          horizontal: 25.w,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            homePageText(
-              'Hello,',
-              color: AppColors.primaryThirdElementText,
-              top: 20,
+      body: BlocBuilder<HomePageBlocs, HomePageStates>(
+        builder: (context, state) {
+          return Container(
+            margin: EdgeInsets.symmetric(
+              vertical: 0,
+              horizontal: 25.w,
             ),
-            homePageText(
-              'username',
-              color: AppColors.primaryText,
-              top: 5,
+            child: CustomScrollView(
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              slivers: [
+                SliverToBoxAdapter(
+                  child: homePageText(
+                    'Hello,',
+                    color: AppColors.primaryThirdElementText,
+                    top: 20,
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: homePageText(
+                    'username',
+                    color: AppColors.primaryText,
+                    top: 5,
+                  ),
+                ),
+                SliverPadding(
+                  padding: EdgeInsets.only(top: 20.h),
+                ),
+                SliverToBoxAdapter(
+                  child: searchView(),
+                ),
+                SliverToBoxAdapter(
+                  child: slidersView(context, state),
+                ),
+                SliverToBoxAdapter(
+                  child: menuView(),
+                ),
+                SliverPadding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 18.h,
+                    horizontal: 0.w,
+                  ),
+                ),
+                SliverGrid(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 15,
+                    crossAxisSpacing: 15,
+                    childAspectRatio: 1.6,
+                  ),
+                  delegate: SliverChildBuilderDelegate(
+                    childCount: 4,
+                    (context, index) {
+                      return Container(
+                        width: 100,
+                        height: 100,
+                        color: Colors.red,
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
-            SizedBox(
-              height: 20.h,
-            ),
-            searchView(),
-            slidersView(),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

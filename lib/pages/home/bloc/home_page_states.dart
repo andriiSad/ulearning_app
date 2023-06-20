@@ -5,7 +5,7 @@ class HomePageStates {
 
   final int index;
 
-  HomePageStates copyWith(int? index) {
+  HomePageStates copyWith({int? index}) {
     return HomePageStates(
       index: index ?? this.index,
     );
