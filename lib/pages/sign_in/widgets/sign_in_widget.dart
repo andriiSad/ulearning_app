@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../common/values/colors.dart';
-import '../sign_in_controller.dart';
 
 AppBar buildAppBar() {
   return AppBar(
@@ -94,7 +93,7 @@ Widget buildTextField({
         15.w,
       ),
       border: Border.all(
-        color: AppColors.primaryFourElementText,
+        color: AppColors.primaryFourthElementText,
       ),
     ),
     child: Row(
@@ -197,14 +196,14 @@ Widget buildLigInAndRegButton({
         border: Border.all(
           color: buttonType == 'login'
               ? Colors.transparent
-              : AppColors.primaryFourElementText,
+              : AppColors.primaryFourthElementText,
         ),
         boxShadow: const [
           BoxShadow(
             spreadRadius: 1,
             blurRadius: 2,
             offset: Offset(0, 1),
-            color: AppColors.primaryFourElementText,
+            color: AppColors.primaryFourthElementText,
           ),
         ],
       ),

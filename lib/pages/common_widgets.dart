@@ -93,7 +93,7 @@ Widget buildTextField({
         15.w,
       ),
       border: Border.all(
-        color: AppColors.primaryFourElementText,
+        color: AppColors.primaryFourthElementText,
       ),
     ),
     child: Row(
@@ -196,14 +196,14 @@ Widget buildLigInAndRegButton({
         border: Border.all(
           color: buttonType == 'login'
               ? Colors.transparent
-              : AppColors.primaryFourElementText,
+              : AppColors.primaryFourthElementText,
         ),
         boxShadow: const [
           BoxShadow(
             spreadRadius: 1,
             blurRadius: 2,
             offset: Offset(0, 1),
-            color: AppColors.primaryFourElementText,
+            color: AppColors.primaryFourthElementText,
           ),
         ],
       ),

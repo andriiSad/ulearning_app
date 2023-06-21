@@ -52,7 +52,7 @@ class _AppPageState extends State<AppPage> {
                 showSelectedLabels: false,
                 showUnselectedLabels: false,
                 selectedItemColor: AppColors.primaryElement,
-                unselectedItemColor: AppColors.primaryFourElementText,
+                unselectedItemColor: AppColors.primaryFourthElementText,
                 onTap: (value) {
                   context.read<AppBlocs>().add(TriggerAppEvent(value));
                 },

@@ -21,4 +21,7 @@ class StorageService {
 
   bool getIsLoggedIn() =>
       _prefs.getString(AppConstants.STORAGE_USER_TOKEN) == null ? false : true;
+  Future<bool> remove(String key) {
+    return _prefs.remove(key);
+  }
 }

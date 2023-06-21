@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -72,12 +70,13 @@ class _HomePageState extends State<HomePage> {
                     childAspectRatio: 1.6,
                   ),
                   delegate: SliverChildBuilderDelegate(
-                    childCount: 4,
+                    childCount: 6,
                     (context, index) {
-                      return Container(
-                        width: 100,
-                        height: 100,
-                        color: Colors.red,
+                      return GestureDetector(
+                        onTap: () {
+                          print(index);
+                        },
+                        child: courseGrid(),
                       );
                     },
                   ),
